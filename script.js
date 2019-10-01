@@ -20,7 +20,7 @@ async function browseGifs(e) {
   const data = await response.json();
 
   emojis = data;
- 
+
   emojiIcons = emojis
     .map(
       (emoji, index) =>
@@ -37,7 +37,7 @@ function chooseEmoji(e) {
   if (e.target.dataset.index) {
     const index = e.target.dataset.index;
 
-    let selectedEmoji = `${emojis[index].char}`;
+    let selectedEmoji = e.target.innerHTML;
     textarea.innerHTML = selectedEmoji;
     //closes modal
     $("#emojimodal").modal("hide");
