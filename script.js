@@ -47,15 +47,22 @@ function chooseEmoji(e) {
 function searchEmojis(e) {
   e.preventDefault();
   const search = searchEmoji.value;
-
-  let filteredEmojis = emojis
-    .filter(emoji => emoji.name.includes(`${search}`))
-    .map(
-      (emoji, index) =>
-        `<div data-index=${index} data-name="${emoji.name}" class="emoji">${emoji.char}</div>`
-    )
-    .join("");
-  emojimodalbody.innerHTML = filteredEmojis;
+  if (search.length >= 3) {
+    let filteredEmojis = emojis
+      .filter(emoji => emoji.name.includes(`${search}`))
+      .map(
+        (emoji, index) =>
+          `<div data-index=${index} data-name="${emoji.name}" class="emoji">${emoji.char}</div>`
+      )
+      .join("");
+    emojimodalbody.innerHTML = filteredEmojis;
+  } else if (search.length == 0) {
+    //the else if and else were done because the instructions said to use the same techniques as the in-class exercise 4b which
+    //requires nothing to be displayed if less than 3 characters; however, that didn't make sense to me so I compromised
+    emojimodalbody.innerHTML = emojiIcons;
+  } else {
+    emojimodalbody.innerHTML = "";
+  }
 }
 
 /*** FILTER BASED ON SMILEY FACE ICON ***/
